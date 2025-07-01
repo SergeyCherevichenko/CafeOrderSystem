@@ -42,7 +42,7 @@ jobs:
           cp -r out/* dist/tmp_classes/
 
           # Создаём manifest с указанием Main-класса
-          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainClass" > manifest.txt
+          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.Main" > manifest.txt
 
           # Собираем fat-jar
           jar cfm dist/CafeOrderSystem-fat.jar manifest.txt -C dist/tmp_libs . -C dist/tmp_classes .
