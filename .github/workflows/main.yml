@@ -35,7 +35,7 @@ jobs:
           jar cfm dist/CafeOrderSystem.jar manifest.txt -C out .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v4
         with:
           name: CafeOrderSystem
           path: dist/
