@@ -33,3 +33,9 @@ jobs:
           mkdir -p dist
           echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainClass" > manifest.txt
           jar cfm dist/CafeOrderSystem.jar manifest.txt -C out .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: CafeOrderSystem
+          path: dist/
