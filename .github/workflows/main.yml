@@ -27,3 +27,9 @@ jobs:
       - name: Run tests
         run: |
           java -cp "out:lib/*" org.junit.platform.console.ConsoleLauncher --scan-class-path
+
+      - name: Create JAR file
+        run: |
+          mkdir -p dist
+          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainClass" > manifest.txt
+          jar cfm dist/CafeOrderSystem.jar manifest.txt -C out .
