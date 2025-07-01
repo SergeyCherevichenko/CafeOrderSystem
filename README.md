@@ -2,10 +2,9 @@
 
 **CafeOrderSystem** — это консольное Java-приложение для управления кафе. Оно реализует логику обработки клиентов, заказов и меню, включая роли администратора и пользователя, хранение данных и взаимодействие через команды.
 
-📦 **Скачать сборку (JAR)**:  
-[⬇️ CafeOrderSystem-fat.jar]  
-<sup>⚠️ Требуется установленный JDK 17</sup>
+## 📦 Скачать сборку (JAR)
 
+▶️ [⬇️ CafeOrderSystem-fat.jar.zip](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/latest/download/CafeOrderSystem-fat.jar.zip)
 ---
 
 ## 🚀 Как запустить
