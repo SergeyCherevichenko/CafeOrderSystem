@@ -5,6 +5,8 @@ import uz.cherevichenko_sergey.cafe_order_system.model.client.Client;
 import uz.cherevichenko_sergey.cafe_order_system.model.service.MenuService;
 import uz.cherevichenko_sergey.cafe_order_system.view.ConsoleUI;
 import uz.cherevichenko_sergey.cafe_order_system.view.View;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
