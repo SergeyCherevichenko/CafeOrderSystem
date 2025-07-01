@@ -30,7 +30,7 @@ public class FileHandlerForListClients implements DataStore<ListClients> {
         try {
             return mapper.readValue(new File("output_list_clients.json"), ListClients.class);
         } catch (Exception e) {
-            e.printStackTrace();
+
             return new ListClients();
         }
     }

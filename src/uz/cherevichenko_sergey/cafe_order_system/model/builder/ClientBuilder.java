@@ -7,8 +7,8 @@ public class ClientBuilder {
     private final String emailAdmin;
     private final  String passwordAdmin;
     public ClientBuilder(){
-        emailAdmin = "cherevichenkosn@gmail.com";
-        passwordAdmin = DigestUtils.sha256Hex("Bradley-10121981");
+        emailAdmin = "sergey@gmail.com";
+        passwordAdmin = DigestUtils.sha256Hex("321");
     }
     public Client build(String name, String phoneNumber, String email, String password) {
         Client client =  new Client(name, phoneNumber,email,password);

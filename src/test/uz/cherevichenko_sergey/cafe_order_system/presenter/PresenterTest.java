@@ -11,7 +11,7 @@ class PresenterTest {
     void clientLogin() {
         View view = new ConsoleUI();
         Presenter presenter  =new Presenter(view);
-        assertTrue(presenter.clientLogin("Sergey","cherevichenkosn@gmail.com","Bradley-10121981"));
+        assertTrue(presenter.clientLogin("Sergey","sergey@gmail.com","321"));
         assertFalse(presenter.clientLogin("123","123","123"));
 
     }
@@ -20,7 +20,7 @@ class PresenterTest {
     void isAdmin() {
         View view = new ConsoleUI();
         Presenter presenter  =new Presenter(view);
-        assertTrue(presenter.clientLogin("Sergey","cherevichenkosn@gmail.com","Bradley-10121981"));
+        assertTrue(presenter.clientLogin("Sergey","sergey@gmail.com","321"));
         assertTrue(presenter.isAdmin());
 
     }

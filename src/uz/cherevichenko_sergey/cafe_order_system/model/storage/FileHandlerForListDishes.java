@@ -32,7 +32,7 @@ public class FileHandlerForListDishes implements DataStore<ListDishes> {
             return mapper.readValue(new File("output_list_dishes.json"),ListDishes.class);
 
         } catch (Exception e){
-            e.printStackTrace();
+
             return new ListDishes();
 
         }
