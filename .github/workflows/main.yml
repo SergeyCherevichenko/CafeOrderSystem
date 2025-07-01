@@ -28,14 +28,27 @@ jobs:
         run: |
           java -cp "out:lib/*" org.junit.platform.console.ConsoleLauncher --scan-class-path
 
-      - name: Create JAR file
+      - name: Create fat JAR file
         run: |
-          mkdir -p dist
-          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainClass" > manifest.txt
-          jar cfm dist/CafeOrderSystem.jar manifest.txt -C out .
+          mkdir -p dist/tmp_classes
+          mkdir -p dist/tmp_libs
 
-      - name: Upload artifact
+          # Распаковываем все библиотеки
+          for jarfile in lib/*.jar; do
+            unzip -o -q "$jarfile" -d dist/tmp_libs
+          done
+
+          # Копируем свои .class файлы
+          cp -r out/* dist/tmp_classes/
+
+          # Создаём manifest с указанием Main-класса
+          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainClass" > manifest.txt
+
+          # Собираем fat-jar
+          jar cfm dist/CafeOrderSystem-fat.jar manifest.txt -C dist/tmp_libs . -C dist/tmp_classes .
+
+      - name: Upload fat JAR artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CafeOrderSystem
-          path: dist/
+          name: CafeOrderSystem-fat-jar
+          path: dist/CafeOrderSystem-fat.jar
