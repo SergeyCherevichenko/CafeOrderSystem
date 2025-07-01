@@ -67,5 +67,6 @@
     <orderEntry type="library" name="commons.codec" level="project" />
     <orderEntry type="library" name="fasterxml.jackson.datatype.jsr310" level="project" />
     <orderEntry type="library" name="junit.jupiter.engine" level="project" />
+    <orderEntry type="library" name="junit.platform.console" level="project" />
   </component>
 </module>
