@@ -10,18 +10,26 @@ class PresenterTest {
     @Test
     void clientLogin() {
         View view = new ConsoleUI();
-        Presenter presenter  =new Presenter(view);
+        Presenter presenter = new Presenter(view);
+
+        // Регистрация клиента перед логином
+        assertTrue(presenter.clientRegistry("Sergey", "050", "sergey@gmail.com", "321"));
+
+        // Теперь логин должен сработать
         assertTrue(presenter.clientLogin("Sergey","sergey@gmail.com","321"));
         assertFalse(presenter.clientLogin("123","123","123"));
-
     }
+
 
     @Test
     void isAdmin() {
         View view = new ConsoleUI();
-        Presenter presenter  =new Presenter(view);
-        assertTrue(presenter.clientLogin("Sergey","sergey@gmail.com","321"));
-        assertTrue(presenter.isAdmin());
+        Presenter presenter = new Presenter(view);
 
+        presenter.clientRegistry("Sergey", "050", "sergey@gmail.com", "321");
+        presenter.clientLogin("Sergey", "sergey@gmail.com", "321");
+
+        assertTrue(presenter.isAdmin());
     }
+
 }
