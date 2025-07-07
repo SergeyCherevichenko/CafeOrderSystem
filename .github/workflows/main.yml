@@ -28,27 +28,49 @@ jobs:
         run: |
           java -cp "out:lib/*" org.junit.platform.console.ConsoleLauncher --scan-class-path
 
-      - name: Create fat JAR file
+      # ========== СБОРКА JAR ДЛЯ КЛИЕНТА ==========
+      - name: Build fat JAR (Client GUI)
         run: |
-          mkdir -p dist/tmp_classes
-          mkdir -p dist/tmp_libs
+          mkdir -p dist/client/tmp_classes
+          mkdir -p dist/client/tmp_libs
 
-          # Распаковываем все библиотеки
           for jarfile in lib/*.jar; do
-            unzip -o -q "$jarfile" -d dist/tmp_libs
+            unzip -o -q "$jarfile" -d dist/client/tmp_libs
           done
 
-          # Копируем свои .class файлы
-          cp -r out/* dist/tmp_classes/
+          cp -r out/* dist/client/tmp_classes/
 
-          # Создаём manifest с указанием Main-класса
-          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.Main" > manifest.txt
+          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.MainGui" > dist/client/manifest.txt
 
-          # Собираем fat-jar
-          jar cfm dist/CafeOrderSystem-fat.jar manifest.txt -C dist/tmp_libs . -C dist/tmp_classes .
+          jar cfm dist/CafeOrderClient-GUI-fat.jar dist/client/manifest.txt \
+            -C dist/client/tmp_libs . -C dist/client/tmp_classes .
 
-      - name: Upload fat JAR artifact
+      # ========== СБОРКА JAR ДЛЯ СЕРВЕРА ==========
+      - name: Build fat JAR (Server GUI)
+        run: |
+          mkdir -p dist/server/tmp_classes
+          mkdir -p dist/server/tmp_libs
+
+          for jarfile in lib/*.jar; do
+            unzip -o -q "$jarfile" -d dist/server/tmp_libs
+          done
+
+          cp -r out/* dist/server/tmp_classes/
+
+          echo "Main-Class: uz.cherevichenko_sergey.cafe_order_system.CafeOrderServerGuiMain" > dist/server/manifest.txt
+
+          jar cfm dist/CafeOrderServer-GUI-fat.jar dist/server/manifest.txt \
+            -C dist/server/tmp_libs . -C dist/server/tmp_classes .
+
+      # ========== ЗАГРУЗКА АРТЕФАКТОВ ==========
+      - name: Upload Client GUI JAR
         uses: actions/upload-artifact@v4
         with:
-          name: CafeOrderSystem-fat-jar
-          path: dist/CafeOrderSystem-fat.jar
+          name: CafeOrderClient-GUI-fat-jar
+          path: dist/CafeOrderClient-GUI-fat.jar
+
+      - name: Upload Server GUI JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: CafeOrderServer-GUI-fat-jar
+          path: dist/CafeOrderServer-GUI-fat.jar
