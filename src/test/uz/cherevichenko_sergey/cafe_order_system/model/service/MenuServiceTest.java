@@ -35,11 +35,11 @@ class MenuServiceTest {
 
         // Первый вызов - добавление нового клиента
         boolean firstTry = menuService.clientRegistry("Elena", "055", "elena@example.com", "123");
-        assertFalse(firstTry); // Ожидаем true — клиент успешно добавлен
+        assertTrue(firstTry); // Ожидаем true — клиент успешно добавлен
 
         // Второй вызов - тот же клиент
-        boolean secondTry = menuService.clientRegistry("123", "123", "elena@example.com", "123");
-        assertTrue(secondTry); // Ожидаем false — клиент уже есть
+        boolean secondTry = menuService.clientRegistry("123", "055", "elena@example.com", "123");
+        assertFalse(secondTry); // Ожидаем false — клиент уже есть
     }
 
 }

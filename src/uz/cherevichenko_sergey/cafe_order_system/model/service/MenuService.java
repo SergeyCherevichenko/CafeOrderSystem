@@ -2,13 +2,13 @@ package uz.cherevichenko_sergey.cafe_order_system.model.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import uz.cherevichenko_sergey.cafe_order_system.model.client.Client;
-import uz.cherevichenko_sergey.cafe_order_system.model.enums.Status;
-import uz.cherevichenko_sergey.cafe_order_system.model.storage.FileHandlerForListClients;
 import uz.cherevichenko_sergey.cafe_order_system.model.client.ListClients;
 import uz.cherevichenko_sergey.cafe_order_system.model.dish.Dish;
-import uz.cherevichenko_sergey.cafe_order_system.model.storage.FileHandlerForListDishes;
 import uz.cherevichenko_sergey.cafe_order_system.model.dish.ListDishes;
+import uz.cherevichenko_sergey.cafe_order_system.model.enums.Status;
 import uz.cherevichenko_sergey.cafe_order_system.model.order.Order;
+import uz.cherevichenko_sergey.cafe_order_system.model.storage.FileHandlerForListClients;
+import uz.cherevichenko_sergey.cafe_order_system.model.storage.FileHandlerForListDishes;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -271,13 +271,13 @@ public class MenuService {
     }
 
     private List<Order> getAllOrders() {
-        if (clientsService.getListClients().getAllClients().isEmpty()) return null;
+        this.allOrders.clear(); // всегда чистим, даже если клиентов нет
 
-        this.allOrders.clear(); // очищаем текущий список всех заказов
+        List<Client> clients = clientsService.getListClients().getAllClients();
+        if (clients == null || clients.isEmpty()) return this.allOrders; // пустой, но не null
 
-        for (Client client : clientsService.getListClients().getAllClients()) {
-            if (!client.getOrders().isEmpty()) {
-                // добавляем все заказы клиента
+        for (Client client : clients) {
+            if (client.getOrders() != null && !client.getOrders().isEmpty()) {
                 this.allOrders.addAll(client.getOrders());
             }
         }
@@ -286,18 +286,22 @@ public class MenuService {
 
 
 
+
     public String getInfoAllOrders() {
-        getAllOrders(); // обновляем список
+        List<Order> orders = getAllOrders();
+        if (orders == null || orders.isEmpty()) {
+            return "Нет заказов.";
+        }
 
         StringBuilder builder = new StringBuilder();
         int i = 0;
-        for (Order order : this.getAllOrders()) {
+        for (Order order : orders) {
             builder.append(i).append(". ").append(order.toString()).append("\n");
             i++;
         }
-
         return builder.toString();
     }
+
     public boolean removeDishFromMenu(int index) {
         return dishService.removeDishByIndexFromListDish(index);
     }

@@ -1,8 +1,8 @@
 package uz.cherevichenko_sergey.cafe_order_system.model.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import uz.cherevichenko_sergey.cafe_order_system.model.client.Client;
 import uz.cherevichenko_sergey.cafe_order_system.model.builder.ClientBuilder;
+import uz.cherevichenko_sergey.cafe_order_system.model.client.Client;
 import uz.cherevichenko_sergey.cafe_order_system.model.client.ListClients;
 import uz.cherevichenko_sergey.cafe_order_system.model.order.Order;
 
@@ -96,6 +96,7 @@ public class ClientsService {
     }
 
     public Client login(String email, String rawPassword) {
+        if (listClients.getAllClients().isEmpty()) return null;
         for (Client client : listClients.getAllClients()) {
 
             if (client.getEmail().equals(email) &&
