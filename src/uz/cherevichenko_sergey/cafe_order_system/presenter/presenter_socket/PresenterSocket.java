@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.List;
 
@@ -20,6 +21,8 @@ public class PresenterSocket {
     private final ObjectMapper objectMapper;
     private final PrintWriter out;
     private final BufferedReader in;
+    private  final String ip;
+    private  final int port;
 
     // Конструктор по умолчанию — localhost
     public PresenterSocket(View view) throws IOException {
@@ -34,6 +37,8 @@ public class PresenterSocket {
     // Центральный конструктор
     public PresenterSocket(View view, String ip, int port) throws IOException {
         this.view = view;
+        this.ip = ip;
+        this.port = port;
         this.clientSocket = new Socket(ip, port);
         this.objectMapper = new ObjectMapper();
         this.out = new PrintWriter(clientSocket.getOutputStream(), true);
@@ -527,14 +532,16 @@ public class PresenterSocket {
 
     }
 
-    public boolean isServerAvailable() {
-        try (Socket socket = new Socket("localhost", 12345)) {
-            System.out.println("true");
-            return true; // соединение успешно
+
+    public static boolean checkServerAvailable(String ip, int port) {
+        try (Socket socket = new Socket()) {
+            socket.connect(new InetSocketAddress(ip, port), 1000);
+            return true;
         } catch (IOException e) {
-            System.out.println("false");
-            return false; // не удалось соединиться
+            return false;
         }
     }
+
+
 
 }

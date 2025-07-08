@@ -290,14 +290,13 @@ public class CafeOrderServer {
             Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
             while (interfaces.hasMoreElements()) {
                 NetworkInterface iface = interfaces.nextElement();
-                if (iface.isLoopback() || !iface.isUp()) continue;
+                if (!iface.isUp() || iface.isLoopback() || iface.isVirtual()) continue;
 
                 Enumeration<InetAddress> addresses = iface.getInetAddresses();
                 while (addresses.hasMoreElements()) {
                     InetAddress addr = addresses.nextElement();
                     if (addr.isLoopbackAddress()) continue;
-                    if (addr.getHostAddress().contains(":")) continue; // исключаем IPv6
-                    return addr.getHostAddress();
+                    if (addr instanceof Inet4Address) return addr.getHostAddress();
                 }
             }
         } catch (Exception e) {
@@ -305,6 +304,7 @@ public class CafeOrderServer {
         }
         return "IP не найден";
     }
+
 
 
 

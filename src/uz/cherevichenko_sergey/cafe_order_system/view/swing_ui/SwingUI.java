@@ -61,15 +61,11 @@ public class SwingUI extends JFrame implements View,
 
         mainPanel.showPanel(MainPanel.PANEL_START_MENU);
 
-        boolean connected = presenter != null && presenter.isServerAvailable();
+        // ✅ Сервер уже проверен в MainGui до создания этой View
+        // Обновим статус на панели
         PanelStartMenu panel = mainPanel.getPanelStartMenu();
         if (panel != null) {
-            panel.updateServerStatus(connected);
-        }
-
-        if (!connected) {
-            // бросаем ошибку, чтобы main сам решал, выходить или нет
-            throw new RuntimeException("Не удалось подключиться к серверу");
+            panel.updateServerStatus(true); // всегда true, раз мы уже проверили
         }
     }
 
