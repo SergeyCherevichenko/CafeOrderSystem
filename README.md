@@ -8,7 +8,7 @@
 
 | Версия | Описание | Скачать |
 |--------|----------|---------|
-| ✅ **v1.0.0** | Консольное приложение с полной логикой | [⬇️ Скачать JAR](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v1.0.0/CafeOrderSystem-fat.jar) |
+| ✅ **v1.0.0** | Консольное приложение с полной логикой | [⬇️ Скачать JAR](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v1.0.0/CafeOrderSystem-fat.jar.zip) |
 | 🌐 **v2.0.0** | Клиент-серверная архитектура с GUI (Swing + сокеты) | 🔽 [Сервер](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderServer-GUI-fat.jar)<br>🖥️ [Клиент](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderClient-GUI-fat.jar) |
 
 ---
