@@ -25,8 +25,12 @@
 
 ```bash
 java -jar CafeOrderSystem-fat.jar
+
+---
 ### 🌐 Клиент-серверная версия (v2.0.0)
 Установите JDK 17+
+
+---
 
 Скачайте и запустите сервер:
 java -jar CafeOrderServer-GUI-fat.jar
