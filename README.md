@@ -1,6 +1,8 @@
 # ☕ CafeOrderSystem
 
-**CafeOrderSystem** — это учебное Java-приложение для управления кафе. Поддерживает работу с клиентами, заказами и меню в двух версиях: **консольная (v1.0.0)** и **клиент-серверная с GUI (v2.0.0)**.
+**CafeOrderSystem** — это учебное Java-приложение для управления кафе. Поддерживает работу с клиентами, заказами и меню в двух версиях:  
+🔹 **v1.0.0** — консольная версия  
+🔹 **v2.0.0** — клиент-серверная архитектура с GUI (Swing + сокеты)
 
 ---
 
@@ -9,7 +11,7 @@
 | Версия | Описание | Скачать |
 |--------|----------|---------|
 | ✅ **v1.0.0** | Консольное приложение с полной логикой | [⬇️ Скачать JAR](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v1.0.0/CafeOrderSystem-fat.jar.zip) |
-| 🌐 **v2.0.0** | Клиент-серверная архитектура с GUI (Swing + сокеты) | 🔽 [Сервер](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderServer-GUI-fat.jar)<br>🖥️ [Клиент](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderClient-GUI-fat.jar) |
+| 🌐 **v2.0.0** | Клиент-серверная архитектура с графическим интерфейсом | 🔽 [Сервер](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderServer-GUI-fat.jar)<br>🖥️ [Клиент](https://github.com/SergeyCherevichenko/CafeOrderSystem/releases/download/v2.0.0/CafeOrderClient-GUI-fat.jar) |
 
 ---
 
@@ -18,69 +20,57 @@
 ### ☑️ Консольная версия (v1.0.0)
 
 1. Установите [JDK 17+](https://adoptium.net/temurin/releases/)
-2. Скачайте `CafeOrderSystem-fat.jar`
-3. Запустите:
+2. Скачайте `CafeOrderSystem-fat.jar.zip`, распакуйте
+3. В терминале выполните:
 
 ```bash
 java -jar CafeOrderSystem-fat.jar
 🌐 Клиент-серверная версия (v2.0.0)
 Установите JDK 17+
 
-Запустите сначала сервер:
-
-bash
-Копировать
-Редактировать
+Скачайте и запустите сервер:
 java -jar CafeOrderServer-GUI-fat.jar
-Затем на другой (или той же) машине — клиент:
-
-bash
-Копировать
-Редактировать
+Затем запустите клиент (на той же или другой машине):
 java -jar CafeOrderClient-GUI-fat.jar
-Введите IP и порт сервера (например, 192.168.1.10 и 12345)
-
 🔐 Доступ администратора
-Чтобы войти под админом:
+Для входа под админом используйте:
 
 Email: sergey@gmail.com
 
 Пароль: 321
 
-Вы также можете зарегистрировать нового пользователя.
+Вы также можете зарегистрировать нового пользователя и использовать обычный режим.
 
 📑 Возможности
-👤 Регистрация и авторизация (пользователь / админ)
+👤 Регистрация и авторизация (роли: пользователь / администратор)
 
 🧾 Создание и управление заказами
 
-🍔 Добавление и удаление блюд из меню
+🍽️ Добавление и удаление блюд в меню
 
-🗂️ Сохранение и загрузка данных (JSON)
+🗂️ Сохранение и загрузка данных в формате JSON
 
-🧪 Модульные тесты (JUnit 5)
+🧪 Покрытие модульными тестами (JUnit 5)
 
-🌐 Сокет-сервер (v2.0.0) и обмен в формате JSON
+🌐 Обмен данными через сокеты и DTO (в v2.0.0)
 
-🎨 Swing GUI интерфейс (в v2.0.0)
-
-📇 Контакты
-Автор: Сергей Черевиченко
-
-Email: cherevichenkoSN@gmail.com
-
-GitHub: SergeyCherevichenko
+🎨 Графический интерфейс на Swing (в v2.0.0)
 
 🛠️ Технологии
 Java 17+
 
-Swing
+Swing (GUI)
 
-Socket API
+Socket API (TCP)
 
-Jackson (JSON)
+Jackson (для JSON сериализации)
 
-JUnit 5
+JUnit 5 (тестирование)
+
+📇 Контакты
+Автор: Сергей Черевиченко
+📧 Email: cherevichenkoSN@gmail.com
+🔗 GitHub: github.com/SergeyCherevichenko
 
 yaml
 Копировать
